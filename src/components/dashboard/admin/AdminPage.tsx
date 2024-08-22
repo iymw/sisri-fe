@@ -46,6 +46,7 @@ const AdminPage = () => {
       <SideNavbar
         onClick={() => setOpenCloseNav(!openCloseNav)}
         openCloseNav={openCloseNav}
+        status="Admin"
       >
         {items.map((item, indexItem) => (
           <hgroup className="w-full space-y-4" key={indexItem}>

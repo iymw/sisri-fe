@@ -14,10 +14,12 @@ const SideNavbar = ({
   children,
   onClick,
   openCloseNav,
+  status,
 }: {
   children: React.ReactNode;
   onClick: () => void;
   openCloseNav: boolean;
+  status: string;
 }) => {
   return (
     <>
@@ -34,7 +36,9 @@ const SideNavbar = ({
             height={75}
             alt="logo"
           />
-          <Typography className="!text-base">SISRI Dashboard Admin</Typography>
+          <Typography className="!text-base">
+            SISRI Dashboard {status}
+          </Typography>
         </hgroup>
         {children}
         <Button leftIcon={CiLogout} variant="ghost">
