@@ -46,6 +46,13 @@ const ButtonSection = () => {
             leftIcon: undefined,
             rightIcon: undefined,
             isLoading: true,
+            icon: undefined,
+            Component: Button,
+          },
+          {
+            leftIcon: undefined,
+            rightIcon: undefined,
+            isLoading: true,
             icon: CiGrid41,
             Component: IconButton,
           },

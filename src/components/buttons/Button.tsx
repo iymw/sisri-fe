@@ -115,8 +115,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={cn(
               "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
               {
-                "text-white": ["primary", "dark"].includes(variant),
-                // 'text-black': ['light'].includes(variant),
+                "text-white": [
+                  "blue",
+                  "red",
+                  "green",
+                  "yellow",
+                  "dark",
+                ].includes(variant),
+                "text-black": ["ghost", "secondary"].includes(variant),
                 // 'text-primary-500': ['outline', 'ghost'].includes(variant),
               },
             )}

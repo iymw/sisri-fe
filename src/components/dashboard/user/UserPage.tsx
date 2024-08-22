@@ -2,11 +2,10 @@
 import { LucideIcon } from "lucide-react";
 import React, { useState } from "react";
 import { IconType } from "react-icons";
-import { CiGrid41, CiLocationOn } from "react-icons/ci";
-import { GiCctvCamera } from "react-icons/gi";
+import { CiGrid41, CiMail } from "react-icons/ci";
+import { FaHistory } from "react-icons/fa";
 import { IoIosWarning } from "react-icons/io";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import { TbTrafficLights } from "react-icons/tb";
 
 import SideButton from "@/components/dashboard/SideButton";
 import SideNavbar from "@/components/dashboard/SideNavbar";
@@ -20,20 +19,16 @@ type SideNavItem = {
 const items: SideNavItem[][] = [
   [
     { text: "Overview", icon: CiGrid41 },
-    { text: "SI-ROAD", icon: CiLocationOn },
-    { text: "SI-TRAFFIC", icon: TbTrafficLights },
+    { text: "Riwayan Pembayaran", icon: FaHistory },
+    { text: "Pelanggaran", icon: IoIosWarning },
   ],
   [
-    { text: "CCTV", icon: GiCctvCamera },
-    { text: "Pelanggaran", icon: IoIosWarning },
-    {
-      text: "Kondisi Lalu Lintas",
-      icon: IoIosInformationCircleOutline,
-    },
+    { text: "Kondisi Lalu Lintas", icon: IoIosInformationCircleOutline },
+    { text: "Pengaduan", icon: CiMail },
   ],
 ];
 
-const AdminPage = () => {
+const UserPage = () => {
   const [active, setActive] = useState<number>(0);
   const [openCloseNav, setOpenCloseNav] = useState<boolean>(false);
   const trigger = (index: number) => {
@@ -78,4 +73,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default UserPage;
