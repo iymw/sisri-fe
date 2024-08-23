@@ -25,7 +25,7 @@ const SideNavbar = ({
     <>
       <div
         className={cn(
-          "hidden min-h-screen w-full flex-col items-center space-y-8 py-8 shadow-lg md:flex md:w-[25%] md:translate-x-0",
+          "fixed z-50 hidden min-h-screen w-full flex-col items-center space-y-8 bg-white py-8 shadow-lg md:flex md:w-[25%] md:translate-x-0",
           openCloseNav ? "!flex" : "hidden",
         )}
       >
@@ -54,7 +54,7 @@ const SideNavbar = ({
       </div>
       {!openCloseNav && (
         <IconButton
-          className="fixed bottom-8 left-8 flex md:hidden"
+          className="fixed bottom-8 right-8 z-40 flex md:hidden"
           onClick={onClick}
           icon={IoMdMenu}
           variant="blue"
