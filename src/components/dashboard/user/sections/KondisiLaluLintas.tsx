@@ -60,7 +60,7 @@ const KondisiLaluLintas = () => {
 
   return (
     <>
-      <div className="min-h-screen w-full space-y-8 p-8 md:w-auto">
+      <section className="min-h-screen w-full space-y-8 p-8 pt-6">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4">
             <div className="flex flex-col gap-4 md:flex-row">
@@ -86,28 +86,32 @@ const KondisiLaluLintas = () => {
             </Button>
           </form>
         </FormProvider>
-        <GoogleMap
-          mapContainerStyle={{
-            height: "500px",
-            width: "100%",
-            borderRadius: "0.25rem",
-          }}
-          center={center}
-          zoom={10}
-          onLoad={(map) => setMap(map)}
-        >
-          <>
-            <Marker position={center} />
-            {directionsResponse && (
-              <DirectionsRenderer directions={directionsResponse} />
-            )}
-          </>
-        </GoogleMap>
-        <IconButton
-          icon={FaDownLeftAndUpRightToCenter}
-          onClick={() => map?.panTo(center)}
-        ></IconButton>
-      </div>
+
+        <div className="space-y-4">
+          <IconButton
+            icon={FaDownLeftAndUpRightToCenter}
+            onClick={() => map?.panTo(center)}
+            variant="ghost"
+          ></IconButton>
+          <GoogleMap
+            mapContainerStyle={{
+              height: "500px",
+              width: "100%",
+              borderRadius: "0.25rem",
+            }}
+            center={center}
+            zoom={10}
+            onLoad={(map) => setMap(map)}
+          >
+            <>
+              <Marker position={center} />
+              {directionsResponse && (
+                <DirectionsRenderer directions={directionsResponse} />
+              )}
+            </>
+          </GoogleMap>
+        </div>
+      </section>
     </>
   );
 };

@@ -9,6 +9,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 import SideButton from "@/components/dashboard/SideButton";
 import SideNavbar from "@/components/dashboard/SideNavbar";
+import TopNavbar from "@/components/dashboard/TopNavbar";
 import KondisiLaluLintas from "@/components/dashboard/user/sections/KondisiLaluLintas";
 import Typography from "@/components/Typography";
 
@@ -39,42 +40,41 @@ const UserPage = () => {
 
   return (
     <>
+      <TopNavbar onClick={() => setOpenCloseNav(!openCloseNav)} />
       <div className="flex">
-        <div className="relative w-auto md:w-[25%]">
-          <SideNavbar
-            onClick={() => setOpenCloseNav(!openCloseNav)}
-            openCloseNav={openCloseNav}
-            status="User"
-          >
-            {items.map((item, indexItem) => (
-              <hgroup className="w-full space-y-4" key={indexItem}>
-                <Typography className="pl-8 !text-base text-zinc-400">
-                  {indexItem === 0 ? "Main Menu" : "Other Menu"}
-                </Typography>
-                <section>
-                  {item.map((i: SideNavItem, indexI) => (
-                    <div key={indexI}>
-                      <SideButton
-                        onClick={() =>
-                          trigger(indexItem === 0 ? indexI : indexI + 3)
-                        }
-                        className={
-                          active === (indexItem === 0 ? indexI : indexI + 3)
-                            ? "border-r-2 border-blue-main bg-blue-active text-blue-main"
-                            : "text-black hover:bg-slate-100"
-                        }
-                        icon={i.icon}
-                      >
-                        {i.text}
-                      </SideButton>
-                    </div>
-                  ))}
-                </section>
-              </hgroup>
-            ))}
-          </SideNavbar>
-        </div>
-        {active === 0 && (
+        <SideNavbar
+          onClick={() => setOpenCloseNav(!openCloseNav)}
+          openCloseNav={openCloseNav}
+          status="User"
+        >
+          {items.map((item, indexItem) => (
+            <hgroup className="w-full space-y-4" key={indexItem}>
+              <Typography className="pl-8 !text-base text-zinc-400">
+                {indexItem === 0 ? "Main Menu" : "Other Menu"}
+              </Typography>
+              <section>
+                {item.map((i: SideNavItem, indexI) => (
+                  <div key={indexI}>
+                    <SideButton
+                      onClick={() =>
+                        trigger(indexItem === 0 ? indexI : indexI + 3)
+                      }
+                      className={
+                        active === (indexItem === 0 ? indexI : indexI + 3)
+                          ? "border-r-2 border-blue-main bg-blue-active text-blue-main"
+                          : "text-black hover:bg-slate-100"
+                      }
+                      icon={i.icon}
+                    >
+                      {i.text}
+                    </SideButton>
+                  </div>
+                ))}
+              </section>
+            </hgroup>
+          ))}
+        </SideNavbar>
+        {active === 3 && (
           <>
             <KondisiLaluLintas />
           </>

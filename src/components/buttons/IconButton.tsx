@@ -11,6 +11,7 @@ const IconButtonVariant = [
   "green",
   "yellow",
   "secondary",
+  "ghost",
   "dark",
 ] as const;
 
@@ -78,6 +79,11 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
               "hover:bg-secondary-hover hover:text-black",
               "active:bg-secondary-active",
             ],
+            variant === "ghost" && [
+              "bg-transparent text-blue-main",
+              "hover:bg-blue-50",
+              "active:bg-blue-100",
+            ],
             variant === "dark" && [
               "bg-gray-900 text-white",
               "border border-gray-600",
@@ -104,7 +110,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
                   "yellow",
                   "dark",
                 ].includes(variant),
-                "text-black": ["secondary"].includes(variant),
+                "text-black": ["ghost", "secondary"].includes(variant),
                 // 'text-black': ['light'].includes(variant),
                 // 'text-primary-500': ['outline', 'ghost'].includes(variant),
               },

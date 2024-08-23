@@ -10,6 +10,7 @@ import { TbTrafficLights } from "react-icons/tb";
 
 import SideButton from "@/components/dashboard/SideButton";
 import SideNavbar from "@/components/dashboard/SideNavbar";
+import TopNavbar from "@/components/dashboard/TopNavbar";
 import Typography from "@/components/Typography";
 
 type SideNavItem = {
@@ -43,6 +44,7 @@ const AdminPage = () => {
 
   return (
     <>
+      <TopNavbar onClick={() => setOpenCloseNav(!openCloseNav)} />
       <SideNavbar
         onClick={() => setOpenCloseNav(!openCloseNav)}
         openCloseNav={openCloseNav}

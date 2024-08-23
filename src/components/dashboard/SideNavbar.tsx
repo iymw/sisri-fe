@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { CiLogout } from "react-icons/ci";
-import { IoMdClose, IoMdMenu } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
 import { cn } from "@/lib/utils";
 
@@ -23,43 +23,43 @@ const SideNavbar = ({
 }) => {
   return (
     <>
-      <div
-        className={cn(
-          "fixed z-50 hidden min-h-screen w-full flex-col items-center space-y-8 bg-white py-8 shadow-lg md:flex md:w-[25%] md:translate-x-0",
-          openCloseNav ? "!flex" : "hidden",
-        )}
-      >
-        <hgroup className="flex flex-col items-center justify-center gap-4">
-          <Image
-            src="/images/LOGO-PRIMARY.png"
-            width={75}
-            height={75}
-            alt="logo"
-          />
-          <Typography className="!text-base">
-            SISRI Dashboard {status}
-          </Typography>
-        </hgroup>
-        {children}
-        <Button leftIcon={CiLogout} variant="ghost">
-          Logout
-        </Button>
+      {[
+        "sticky top-0 hidden h-screen flex-col items-center justify-between bg-white py-8 shadow-lg md:flex w-[35%] md:translate-x-0",
+        "md:hidden min-h-screen w-full flex-col items-center justify-between top-0 bg-white py-8 shadow-lg flex fixed z-50 duration-300 ease-in-out w-full md:translate-x-0",
+      ].map((sideNavbarClassName, index) => (
+        <>
+          <div
+            key={index}
+            className={cn(
+              sideNavbarClassName,
+              openCloseNav ? "translate-x-0" : "translate-x-[-100%]",
+            )}
+          >
+            <hgroup className="flex flex-col items-center justify-center gap-4">
+              <Image
+                src="/images/LOGO-PRIMARY.png"
+                width={75}
+                height={75}
+                alt="logo"
+              />
+              <Typography className="!text-base">
+                SISRI Dashboard {status}
+              </Typography>
+            </hgroup>
+            {children}
+            <Button leftIcon={CiLogout} variant="ghost">
+              Logout
+            </Button>
 
-        <IconButton
-          className="flex md:hidden"
-          onClick={onClick}
-          icon={IoMdClose}
-          variant="red"
-        />
-      </div>
-      {!openCloseNav && (
-        <IconButton
-          className="fixed bottom-8 right-8 z-40 flex md:hidden"
-          onClick={onClick}
-          icon={IoMdMenu}
-          variant="blue"
-        />
-      )}
+            <IconButton
+              className="flex md:hidden"
+              onClick={onClick}
+              icon={IoMdClose}
+              variant="red"
+            />
+          </div>
+        </>
+      ))}
     </>
   );
 };
