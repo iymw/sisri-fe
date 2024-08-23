@@ -27,9 +27,8 @@ const SideNavbar = ({
         "sticky top-0 hidden h-screen flex-col items-center justify-between bg-white py-8 shadow-lg md:flex w-[35%] md:translate-x-0",
         "md:hidden min-h-screen w-full flex-col items-center justify-between top-0 bg-white py-8 shadow-lg flex fixed z-50 duration-300 ease-in-out w-full md:translate-x-0",
       ].map((sideNavbarClassName, index) => (
-        <>
+        <div key={index}>
           <div
-            key={index}
             className={cn(
               sideNavbarClassName,
               openCloseNav ? "translate-x-0" : "translate-x-[-100%]",
@@ -58,7 +57,7 @@ const SideNavbar = ({
               variant="red"
             />
           </div>
-        </>
+        </div>
       ))}
     </>
   );
