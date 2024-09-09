@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { IconType } from "react-icons";
 import { CiGrid41, CiMail } from "react-icons/ci";
 import { FaHistory } from "react-icons/fa";
-import { IoIosWarning } from "react-icons/io";
+// import { IoIosWarning } from "react-icons/io";
 import { SiGooglemaps } from "react-icons/si";
 
 import SideButton from "@/components/dashboard/SideButton";
@@ -25,7 +25,7 @@ const items: SideNavItem[][] = [
       icon: FaHistory,
       href: "/user/riwayat-pembayaran",
     },
-    { text: "Pelanggaran", icon: IoIosWarning, href: "/user/pelanggaran" },
+    // { text: "Pelanggaran", icon: IoIosWarning, href: "/user/pelanggaran" },
   ],
   [
     {
