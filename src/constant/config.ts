@@ -3,5 +3,5 @@ export const siteConfig = {
   description:
     "SISRI (Surabaya Integrated Smart Road Infrastructure): Solusi Lalu Lintas Cerdas untuk Mencapai Smart Transport dan Smart Governance di Kota Surabaya",
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: "http://localhost:3000",
+  url: "https://sisri-id.com",
 };
