@@ -10,11 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { CiLocationArrow1 } from "react-icons/ci";
+// import { CiLocationArrow1 } from "react-icons/ci";
 import { FaCar, FaMapMarkerAlt } from "react-icons/fa";
 import { FaRegCircleDot } from "react-icons/fa6";
-import { IoMdClose } from "react-icons/io";
 
+// import { IoMdClose } from "react-icons/io";
 import Button from "@/components/buttons/Button";
 import IconButton from "@/components/buttons/IconButton";
 import Input from "@/components/forms/Input";
@@ -38,7 +38,7 @@ const Maps = () => {
 
   const center = { lat: -7.250445, lng: 112.768845 };
 
-  const [map, setMap] = useState<google.maps.Map | null>(null);
+  // const [map, setMap] = useState<google.maps.Map | null>(null);
 
   /* eslint-disable  @typescript-eslint/no-explicit-any */
   const [directionsResponse, setDirectionsResponse] = useState<any | null>(
@@ -46,7 +46,7 @@ const Maps = () => {
   );
 
   const methods = useForm<MapsForm>({ mode: "onTouched" });
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit } = methods;
 
   const [routeIndex, setRouteIndex] = useState(0);
 
@@ -64,18 +64,18 @@ const Maps = () => {
     setRouteIndex(0);
   };
 
-  function clearRoute() {
-    setDirectionsResponse(null);
-    reset();
-  }
+  // function clearRoute() {
+  //   setDirectionsResponse(null);
+  //   reset();
+  // }
 
   if (!isLoaded) return <></>;
 
   return (
     <>
       <section className="flex h-auto flex-col md:flex-row">
-        <div className="relative top-0 flex h-auto w-full flex-col gap-8 overflow-auto bg-white p-8 shadow-lg md:sticky md:h-screen md:w-6/12 md:translate-x-0">
-          <hgroup className="flex flex-col items-center justify-center gap-4">
+        <div className="relative top-0 flex h-auto w-full flex-col gap-8 overflow-auto bg-white p-8 shadow-lg md:sticky md:h-screen md:w-full md:translate-x-0">
+          <div className="mx-auto flex w-full flex-col justify-center gap-6 md:w-10/12">
             <Link href="/">
               <Image
                 src="/images/LOGO-PRIMARY.png"
@@ -84,12 +84,18 @@ const Maps = () => {
                 alt="logo"
               />
             </Link>
-            <Typography className="!text-base">SISRI Dashboard Maps</Typography>
-          </hgroup>
+            <Typography variant="h2" weight="bold">
+              SISRI Dashboard Maps
+            </Typography>
+            <Typography>
+              Temukan destinasi sesuai dengan kebutuhan harianmu secara{" "}
+              <span className="font-bold">cepat</span> bersama Sisri Maps
+            </Typography>
+          </div>
 
           <FormProvider {...methods}>
             <form
-              className="flex flex-col gap-4 md:w-full"
+              className="mx-auto flex w-full flex-col gap-4 md:w-10/12"
               onSubmit={handleSubmit(onSubmit)}
             >
               <Autocomplete>
@@ -113,24 +119,24 @@ const Maps = () => {
               <Button
                 variant="blue"
                 type="submit"
-                className="flex w-full justify-center"
+                className="mt-4 flex w-full justify-center"
               >
                 Go
               </Button>
             </form>
           </FormProvider>
 
-          <div className="flex items-center justify-center gap-2">
+          {/* <div className="flex items-center justify-center gap-2">
             <IconButton icon={IoMdClose} onClick={clearRoute} variant="red" />
             <IconButton
               icon={CiLocationArrow1}
               onClick={() => map?.panTo(center)}
               variant="secondary"
             />
-          </div>
+          </div> */}
 
           {directionsResponse && (
-            <div className="space-y-2">
+            <div className="mx-auto mt-4 w-full space-y-4 md:w-10/12">
               {directionsResponse.routes.map((route: any, index: number) => (
                 <div
                   key={index}
@@ -161,7 +167,7 @@ const Maps = () => {
             }}
             center={center}
             zoom={10}
-            onLoad={(map) => setMap(map)}
+            // onLoad={(map) => setMap(map)}
           >
             <>
               <Marker position={center} />
