@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { LucideIcon } from "lucide-react";
+import Image from "next/image";
 import React, { useState } from "react";
 import { IconType } from "react-icons";
 import { BsSpeedometer2 } from "react-icons/bs";
@@ -14,6 +15,7 @@ import { WiHumidity } from "react-icons/wi";
 
 import { cn } from "@/lib/utils";
 
+import AqiIndex from "@/components/dashboard/admin/sections/AqiIndex";
 import SideButton from "@/components/dashboard/SideButton";
 import SideNavbar from "@/components/dashboard/SideNavbar";
 // import TopNavbar from "@/components/dashboard/TopNavbar";
@@ -60,12 +62,12 @@ const AdminPage = () => {
   });
 
   const aqiItems = [
-    {
-      icon: "AQI",
-      title: "Air Quality Index",
-      value: postQuery.data?.aqi,
-      quality: postQuery.data?.quality,
-    },
+    // {
+    //   icon: "AQI",
+    //   title: "Air Quality Index",
+    //   value: postQuery.data?.aqi,
+    //   quality: postQuery.data?.quality,
+    // },
     {
       icon: FaTemperatureHigh,
       title: "Temperature",
@@ -181,53 +183,37 @@ const AdminPage = () => {
           ))}
         </SideNavbar>
         <section className="w-full space-y-4 p-8">
-          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-            {aqiItems.map((aqiItem, index) => (
-              <div
-                key={index}
-                className="flex justify-between rounded bg-blue-active/30 p-6"
-              >
-                <div className="flex justify-center">
-                  {typeof aqiItem.icon === "string" ||
-                  typeof aqiItem.icon === "object" ? (
-                    <Typography
-                      variant="bl"
-                      weight="bold"
-                      className="rounded-lg bg-blue-main p-4 text-white"
-                    >
-                      {aqiItem.icon}
-                    </Typography>
-                  ) : (
-                    aqiItem.icon && (
-                      <div className="flex items-center justify-center rounded-lg bg-blue-main p-4 text-3xl text-white">
-                        <aqiItem.icon />
-                      </div>
-                    )
-                  )}
-                </div>
-                <div className="flex flex-col justify-center text-right">
-                  <Typography className="!text-base">
-                    {aqiItem.title}
-                  </Typography>
-                  <Typography variant="bl" weight="bold">
-                    {aqiItem.value}
-                  </Typography>
-                </div>
-                {aqiItem.quality && (
-                  <>
-                    <div className="flex items-end justify-start">
-                      <Typography
-                        className={cn(
-                          aqiItem.quality === "GOOD" ? "text-green-500" : "",
-                        )}
-                        weight="semibold"
-                      >
-                        {aqiItem.quality}
-                      </Typography>
-                    </div>
-                  </>
+          <div className="relative flex justify-between rounded bg-blue-active/30 p-6">
+            <div className="space-y-12">
+              <Typography>Indeks Kualitas Udara</Typography>
+              <Typography
+                variant="h2"
+                weight="semibold"
+                className={cn(
+                  postQuery.data.quality === "GOOD" ? "text-green-600" : "",
                 )}
-              </div>
+              >
+                {postQuery.data.aqi}
+              </Typography>
+            </div>
+            <div className="absolute bottom-0 right-6">
+              <Image
+                src="/images/map-icon.png"
+                alt="smart-air-quality"
+                width={300}
+                height={300}
+              ></Image>
+            </div>
+          </div>
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+            {aqiItems.map((aqiItem, index) => (
+              <AqiIndex
+                key={index}
+                icon={aqiItem.icon}
+                title={aqiItem.title}
+                value={aqiItem.value}
+                // quality={aqiItem.quality}
+              ></AqiIndex>
             ))}
           </div>
         </section>
