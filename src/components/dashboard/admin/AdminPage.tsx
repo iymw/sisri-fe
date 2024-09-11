@@ -93,7 +93,11 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.pm10,
-      unit: "μm/g^3",
+      unit: (
+        <>
+          μm/g<sup>3</sup>
+        </>
+      ),
     },
     {
       icon: (
@@ -107,7 +111,11 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.pm25,
-      unit: "μm/g^3",
+      unit: (
+        <>
+          μm/g<sup>3</sup>
+        </>
+      ),
     },
     {
       icon: (
@@ -121,10 +129,23 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.pm1,
-      unit: "μm/g^3",
+      unit: (
+        <>
+          μm/g<sup>3</sup>
+        </>
+      ),
     },
 
-    { icon: "CO", title: "CO", value: postQuery.data?.co, unit: "μm/g^3" },
+    {
+      icon: "CO",
+      title: "CO",
+      value: postQuery.data?.co,
+      unit: (
+        <>
+          μm/g<sup>3</sup>
+        </>
+      ),
+    },
     {
       icon: (
         <>
@@ -137,7 +158,11 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.no2,
-      unit: "μm/g^3",
+      unit: (
+        <>
+          μm/g<sup>3</sup>
+        </>
+      ),
     },
     {
       icon: (
@@ -151,7 +176,11 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.ozone,
-      unit: "μm/g^3",
+      unit: (
+        <>
+          μm/g<sup>3</sup>
+        </>
+      ),
     },
   ];
 
@@ -189,6 +218,10 @@ const AdminPage = () => {
           ))}
         </SideNavbar>
         <section className="w-full space-y-4 p-8">
+          <div className="flex items-center justify-end gap-2">
+            <CiLocationOn />
+            <Typography>Jl. Raya Kertajaya Indah</Typography>
+          </div>
           <div className="relative flex justify-between rounded-lg bg-blue-active/30 p-6">
             <div className="space-y-16">
               <Typography>Indeks Kualitas Udara</Typography>

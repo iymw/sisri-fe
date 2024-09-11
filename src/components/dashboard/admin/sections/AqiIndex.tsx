@@ -13,7 +13,7 @@ const AqiIndex = ({
   icon: any;
   title: string | React.ReactElement;
   value: string;
-  unit: string;
+  unit: React.ReactElement | string;
 }) => {
   return (
     <>
