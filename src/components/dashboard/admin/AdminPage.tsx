@@ -62,23 +62,24 @@ const AdminPage = () => {
   });
 
   const aqiItems = [
-    // {
-    //   icon: "AQI",
-    //   title: "Air Quality Index",
-    //   value: postQuery.data?.aqi,
-    //   quality: postQuery.data?.quality,
-    // },
     {
       icon: FaTemperatureHigh,
       title: "Temperature",
       value: postQuery.data?.temperature,
+      unit: "°C",
     },
     {
       icon: BsSpeedometer2,
       title: "Pressure",
       value: postQuery.data?.pressure,
+      unit: "Pa",
     },
-    { icon: WiHumidity, title: "Humidity", value: postQuery.data?.humidity },
+    {
+      icon: WiHumidity,
+      title: "Humidity",
+      value: postQuery.data?.humidity,
+      unit: "%Rh",
+    },
 
     {
       icon: (
@@ -92,6 +93,7 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.pm10,
+      unit: "μm/g^3",
     },
     {
       icon: (
@@ -105,6 +107,7 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.pm25,
+      unit: "μm/g^3",
     },
     {
       icon: (
@@ -118,9 +121,10 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.pm1,
+      unit: "μm/g^3",
     },
 
-    { icon: "CO", title: "CO", value: postQuery.data?.co },
+    { icon: "CO", title: "CO", value: postQuery.data?.co, unit: "μm/g^3" },
     {
       icon: (
         <>
@@ -133,6 +137,7 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.no2,
+      unit: "μm/g^3",
     },
     {
       icon: (
@@ -146,6 +151,7 @@ const AdminPage = () => {
         </>
       ),
       value: postQuery.data?.ozone,
+      unit: "μm/g^3",
     },
   ];
 
@@ -183,14 +189,14 @@ const AdminPage = () => {
           ))}
         </SideNavbar>
         <section className="w-full space-y-4 p-8">
-          <div className="relative flex justify-between rounded bg-blue-active/30 p-6">
-            <div className="space-y-12">
+          <div className="relative flex justify-between rounded-lg bg-blue-active/30 p-6">
+            <div className="space-y-16">
               <Typography>Indeks Kualitas Udara</Typography>
               <Typography
                 variant="h2"
                 weight="semibold"
                 className={cn(
-                  postQuery.data.quality === "GOOD" ? "text-green-600" : "",
+                  postQuery.data.quality === "GOOD" ? "text-[#17C964]" : "",
                 )}
               >
                 {postQuery.data.aqi}
@@ -202,6 +208,7 @@ const AdminPage = () => {
                 alt="smart-air-quality"
                 width={300}
                 height={300}
+                className="w-[175px] md:w-[300px]"
               ></Image>
             </div>
           </div>
@@ -211,8 +218,8 @@ const AdminPage = () => {
                 key={index}
                 icon={aqiItem.icon}
                 title={aqiItem.title}
+                unit={aqiItem.unit}
                 value={aqiItem.value}
-                // quality={aqiItem.quality}
               ></AqiIndex>
             ))}
           </div>
