@@ -25,7 +25,7 @@ const AqiIndex = ({
           {typeof icon === "string" || typeof icon === "object" ? (
             <Typography
               weight="bold"
-              className="rounded-lg bg-blue-main p-4 text-white"
+              className="flex items-center justify-center rounded-lg bg-blue-main p-4 text-white"
             >
               {icon}
             </Typography>
@@ -38,8 +38,8 @@ const AqiIndex = ({
           )}
         </div>
         <div className="flex flex-col justify-center space-y-2 text-right">
-          <Typography>{title}</Typography>
-          <Typography weight="bold">
+          <Typography className="text-lg">{title}</Typography>
+          <Typography className="text-xl" weight="bold">
             {value.toString().length > 6 ? value.toString().slice(0, 6) : value}{" "}
             {unit}
           </Typography>

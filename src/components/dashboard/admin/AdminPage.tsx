@@ -1,51 +1,43 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { LucideIcon } from "lucide-react";
+// import { LucideIcon } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
-import { IconType } from "react-icons";
+import React from "react";
 import { BsSpeedometer2 } from "react-icons/bs";
-import { CiGrid41, CiLocationOn } from "react-icons/ci";
 import { FaTemperatureHigh } from "react-icons/fa";
-import { GiCctvCamera } from "react-icons/gi";
-import { IoIosWarning } from "react-icons/io";
-import { IoIosInformationCircleOutline } from "react-icons/io";
-import { TbTrafficLights } from "react-icons/tb";
 import { WiHumidity } from "react-icons/wi";
 
 import { cn } from "@/lib/utils";
 
 import AqiIndex from "@/components/dashboard/admin/sections/AqiIndex";
-import SideButton from "@/components/dashboard/SideButton";
-import SideNavbar from "@/components/dashboard/SideNavbar";
 // import TopNavbar from "@/components/dashboard/TopNavbar";
 import Typography from "@/components/Typography";
 
-type SideNavItem = {
-  text: string;
-  icon?: IconType | LucideIcon;
-  href: string;
-};
+// type SideNavItem = {
+//   text: string;
+//   icon?: IconType | LucideIcon;
+//   href: string;
+// };
 
-const items: SideNavItem[][] = [
-  [
-    { text: "Overview", icon: CiGrid41, href: "/overview" },
-    { text: "SI-ROAD", icon: CiLocationOn, href: "/si-road" },
-    { text: "SI-TRAFFIC", icon: TbTrafficLights, href: "/si-taffic" },
-  ],
-  [
-    { text: "CCTV", icon: GiCctvCamera, href: "/cctv" },
-    { text: "Pelanggaran", icon: IoIosWarning, href: "/pelanggaran" },
-    {
-      text: "Kondisi Lalu Lintas",
-      icon: IoIosInformationCircleOutline,
-      href: "/kondisi-lalu-lintas",
-    },
-  ],
-];
+// const items: SideNavItem[][] = [
+//   [
+//     { text: "Overview", icon: CiGrid41, href: "/overview" },
+//     { text: "SI-ROAD", icon: CiLocationOn, href: "/si-road" },
+//     { text: "SI-TRAFFIC", icon: TbTrafficLights, href: "/si-taffic" },
+//   ],
+//   [
+//     { text: "CCTV", icon: GiCctvCamera, href: "/cctv" },
+//     { text: "Pelanggaran", icon: IoIosWarning, href: "/pelanggaran" },
+//     {
+//       text: "Kondisi Lalu Lintas",
+//       icon: IoIosInformationCircleOutline,
+//       href: "/kondisi-lalu-lintas",
+//     },
+//   ],
+// ];
 
 const AdminPage = () => {
-  const [openCloseNav, setOpenCloseNav] = useState<boolean>(false);
+  // const [openCloseNav, setOpenCloseNav] = useState<boolean>(false);
 
   const postQuery = useQuery({
     queryKey: ["posts"],
@@ -191,7 +183,7 @@ const AdminPage = () => {
     <>
       <div className="flex">
         {/* <TopNavbar onClick={() => setOpenCloseNav(!openCloseNav)} /> */}
-        <SideNavbar
+        {/* <SideNavbar
           onClick={() => setOpenCloseNav(!openCloseNav)}
           openCloseNav={openCloseNav}
           status="Admin"
@@ -216,20 +208,21 @@ const AdminPage = () => {
               </section>
             </hgroup>
           ))}
-        </SideNavbar>
-        <section className="w-full space-y-4 p-8">
-          <div className="flex items-center justify-end gap-2">
+        </SideNavbar> */}
+        <section className="mx-auto flex min-h-screen w-full flex-col justify-center space-y-4 p-8 sm:w-[70%]">
+          {/* <div className="flex items-center justify-end gap-2">
             <CiLocationOn />
             <Typography>Jl. Raya Kertajaya Indah</Typography>
-          </div>
+          </div> */}
           <div className="relative flex justify-between rounded-lg bg-blue-active/30 p-6">
             <div className="space-y-16">
-              <Typography>Indeks Kualitas Udara</Typography>
+              <Typography className="text-lg">Indeks Kualitas Udara</Typography>
               <Typography
                 variant="h2"
                 weight="semibold"
                 className={cn(
                   postQuery.data.quality === "GOOD" ? "text-[#17C964]" : "",
+                  "text-6xl",
                 )}
               >
                 {postQuery.data.aqi}

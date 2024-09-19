@@ -1,19 +1,13 @@
 "use client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
-
-import AdminPage from "@/components/dashboard/admin/AdminPage";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const Page = () => {
-  const queryClient = new QueryClient();
+  const router = useRouter();
 
-  return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <AdminPage />
-      </QueryClientProvider>
-    </>
-  );
+  useEffect(() => router.push("/air-quality"));
+
+  return null;
 };
 
 export default Page;
