@@ -209,7 +209,7 @@ const AdminPage = () => {
             </hgroup>
           ))}
         </SideNavbar> */}
-        <section className="mx-auto flex min-h-screen w-full flex-col justify-center space-y-4 p-8 sm:w-[70%]">
+        <section className="mx-auto flex min-h-screen w-full flex-col space-y-4 p-8">
           {/* <div className="flex items-center justify-end gap-2">
             <CiLocationOn />
             <Typography>Jl. Raya Kertajaya Indah</Typography>
